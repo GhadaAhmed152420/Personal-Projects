@@ -1,0 +1,4 @@
+#Thu Aug 01 18:15:38 EEST 2024
+base.0=C\:\\Users\\nmt\\Documents\\Projects\\birthday_card\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
