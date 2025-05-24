@@ -9,6 +9,14 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.close, color: Colors.black),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/login');
+          },
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -23,12 +31,12 @@ class WelcomeScreen extends StatelessWidget {
                   color: AppColors.primary,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 24),
               const Text(
                 'Welcome to Our app',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 24),
               signInButtonWidget(Icons.phone, "Sign in with Phone Number"),
               const SizedBox(height: 10),
               signInButtonWidget(null, "Sign in with Google"),
@@ -61,13 +69,17 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 10),
               Text.rich(
                 TextSpan(
-                  text: 'By continue you agree to our ',style: TextStyle(color: Colors.grey),
+                  text: 'By continue you agree to our ',
+                  style: TextStyle(color: Colors.grey),
                   children: [
                     TextSpan(
                       text: 'Terms of service',
                       style: TextStyle(color: Color(0xFF3C6EA1)),
                     ),
-                    TextSpan(text: ' and our ', style: TextStyle(color: Colors.grey)),
+                    TextSpan(
+                      text: ' and our ',
+                      style: TextStyle(color: Colors.grey),
+                    ),
                     TextSpan(
                       text: 'Privacy Policy',
                       style: TextStyle(color: Color(0xFF3C6EA1)),

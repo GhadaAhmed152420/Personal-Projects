@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/constants/app_colors.dart';
-import 'package:fruit_market/widgets/otp_input.dart';
-import 'package:fruit_market/widgets/phone_input.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,8 +19,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        leading: const BackButton(),
-        backgroundColor: AppColors.background,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -36,18 +39,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: AppColors.primary,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 24),
               const Text(
                 'Login to Wikala',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 24),
               Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Phone Number Field with Country Code
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -109,8 +111,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(height: 24),
-
-                    // Password Field
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -148,8 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-
-                    const SizedBox(height: 16),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -162,28 +160,38 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Color(0xFF004D8E),
                             decoration: TextDecoration.underline,
                             fontSize: 18,
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ],
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/home');
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50),
-                  backgroundColor: AppColors.primary,
-                ),
-                child: const Text(
-                  'Login',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    fontFamily: 'Arial',
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    bool isVerified = prefs.getBool('isVerified') ?? false;
+
+                    if (isVerified) {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    } else {
+                      Navigator.pushNamed(context, '/phone-verify');
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(50),
+                    backgroundColor: AppColors.primary,
+                  ),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      fontFamily: 'Arial',
+                    ),
                   ),
                 ),
               ),
@@ -191,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Don’t have an account? |',),
+                  const Text('Don’t have an account?|'),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/signup');
@@ -201,6 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         color: Color(0xFF004D8E),
                         decoration: TextDecoration.underline,
+                        fontSize: 18,
                       ),
                     ),
                   ),
