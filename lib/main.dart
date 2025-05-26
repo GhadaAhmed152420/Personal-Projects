@@ -4,6 +4,7 @@ import 'package:fruit_market/screens/login.dart';
 import 'package:fruit_market/screens/onboarding.dart';
 import 'package:fruit_market/screens/otp.dart';
 import 'package:fruit_market/screens/phone_verify.dart';
+import 'package:fruit_market/screens/search.dart';
 import 'package:fruit_market/screens/sign_up.dart';
 import 'package:fruit_market/screens/splash.dart';
 import 'package:fruit_market/screens/welcome.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/phone-verify': (context) => PhoneVerifyScreen(),
         '/otp': (context) => OtpScreen(),
         '/home': (context) => HomeScreen(),
+        '/search': (context) => SearchScreen(),
       },
     );
   }
