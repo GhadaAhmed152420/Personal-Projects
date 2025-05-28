@@ -17,11 +17,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: buildBottomNav(currentIndex, (index) {
-        setState(() {
-          currentIndex = index;
-        });
-      }),
       appBar: AppBar(
         backgroundColor: AppColors.background,
         automaticallyImplyLeading: false,
@@ -29,6 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
           'Fruit Market',
           style: TextStyle(
             color: AppColors.primary,
+            fontFamily: 'Poppins',
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -92,11 +88,21 @@ class _SearchScreenState extends State<SearchScreen> {
             child: ListView.builder(
               padding: const EdgeInsets.all(16),
               itemCount: 3,
-              itemBuilder: (context, index) => sellerCard(index),
+              itemBuilder:
+                  (context, index) => sellerCard(
+                    index: index,
+                    onTap:
+                        () => Navigator.pushNamed(
+                          context,
+                          '/seller-profile',
+                          arguments: index,
+                        ),
+                  ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: buildBottomNav(currentIndex, setState),
     );
   }
 }

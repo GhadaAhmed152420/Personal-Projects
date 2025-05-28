@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -14,15 +15,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     String selectedCountryCode = 'KW';
     final TextEditingController phoneController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-    
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          icon: SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 24,
+            height: 24,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SingleChildScrollView(
@@ -36,6 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
+                  fontFamily: 'Poppins',
                 ),
               ),
               const SizedBox(height: 24),
@@ -49,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                        Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text.rich(

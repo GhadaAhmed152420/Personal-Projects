@@ -58,13 +58,13 @@ void filterPopUp(
                     ),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(30), // شكل بيضاوي
+                      borderRadius: BorderRadius.circular(30), 
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
                         value: selectedArea,
                         isExpanded: true,
-                        icon: const SizedBox.shrink(), // إخفاء السهم الافتراضي
+                        icon: const SizedBox.shrink(), 
                         items:
                             <String>[
                               'All Areas',

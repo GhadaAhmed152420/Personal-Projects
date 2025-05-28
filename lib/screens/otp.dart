@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -57,11 +58,13 @@ class _OtpScreenState extends State<OtpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+       leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 24,
+            height: 24,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
@@ -76,6 +79,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
+                  fontFamily: 'Poppins'
                 ),
               ),
               const SizedBox(height: 30),

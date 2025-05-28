@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
 
 class PhoneVerifyScreen extends StatefulWidget {
@@ -17,10 +18,12 @@ class _PhoneVerifyScreenState extends State<PhoneVerifyScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          icon: SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 24,
+            height: 24,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
@@ -33,6 +36,7 @@ class _PhoneVerifyScreenState extends State<PhoneVerifyScreen> {
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,
+                fontFamily: 'Poppins'
               ),
             ),
             const SizedBox(height: 24),

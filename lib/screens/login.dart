@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,10 +21,12 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          icon: SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 24,
+            height: 24,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SingleChildScrollView(
@@ -37,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
+                  fontFamily: 'Poppins',
                 ),
               ),
               const SizedBox(height: 24),

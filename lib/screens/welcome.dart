@@ -29,6 +29,7 @@ class WelcomeScreen extends StatelessWidget {
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
+                  fontFamily: 'Poppins',
                 ),
               ),
               const SizedBox(height: 24),

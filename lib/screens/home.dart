@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'Fruit Market',
           style: TextStyle(
             color: AppColors.primary,
+            fontFamily: 'Poppins',
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -145,19 +146,21 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView.builder(
               padding: const EdgeInsets.all(16),
               itemCount: 3,
-              itemBuilder: (context, index) => sellerCard(index),
+              itemBuilder:
+                  (context, index) => sellerCard(
+                    index: index,
+                    onTap:
+                        () => Navigator.pushNamed(
+                          context,
+                          '/seller-profile',
+                          arguments: index,
+                        ),
+                  ),
             ),
           ),
         ],
       ),
-      bottomNavigationBar: buildBottomNav(
-        currentIndex,
-        (int index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: buildBottomNav(currentIndex, setState),
     );
   }
 }
