@@ -76,13 +76,16 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
             ),
           ),
           buildProductCard(
+            context,
             'assets/images/vegetables.png',
             "Product name",
             "12.00 KD",
             "14.00 KD",
             true,
+            
           ),
           buildProductCard(
+            context,
             'assets/images/vegetables.png',
             "Product name",
             "Price Upon Selection",

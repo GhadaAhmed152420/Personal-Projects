@@ -4,6 +4,7 @@ import 'package:fruit_market/screens/login.dart';
 import 'package:fruit_market/screens/onboarding.dart';
 import 'package:fruit_market/screens/otp.dart';
 import 'package:fruit_market/screens/phone_verify.dart';
+import 'package:fruit_market/screens/product%20_details.dart';
 import 'package:fruit_market/screens/search.dart';
 import 'package:fruit_market/screens/seller_profile.dart';
 import 'package:fruit_market/screens/sign_up.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/search': (context) => SearchScreen(),
         '/seller-profile': (context) => SellerProfileScreen(),
+        '/product_details': (context) => ProductDetailsScreen(),
       },
     );
   }

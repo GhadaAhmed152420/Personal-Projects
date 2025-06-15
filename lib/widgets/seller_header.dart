@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruit_market/constants/app_colors.dart';
 import 'package:fruit_market/widgets/dot.dart';
 
 Widget buildSellerHeader({required int index}) {

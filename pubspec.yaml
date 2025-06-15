@@ -46,4 +46,4 @@ flutter:
     - family: Titillium Web
       fonts:
         - asset: assets\fonts\TitilliumWeb-Regular.ttf
-        
+        - asset: assets\fonts\TitilliumWeb-Bold.ttf
