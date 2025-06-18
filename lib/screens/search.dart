@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
-import 'package:fruit_market/widgets/bottom_nav.dart';
 import 'package:fruit_market/widgets/filter_pop_up.dart';
 import 'package:fruit_market/widgets/seller_card.dart';
 
@@ -102,7 +101,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: buildBottomNav(currentIndex, setState),
+      
     );
   }
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_market/screens/basket.dart';
+import 'package:fruit_market/screens/delivery_address.dart';
+import 'package:fruit_market/screens/delivery_time.dart';
 import 'package:fruit_market/screens/home.dart';
 import 'package:fruit_market/screens/login.dart';
+import 'package:fruit_market/screens/main.dart';
 import 'package:fruit_market/screens/onboarding.dart';
 import 'package:fruit_market/screens/otp.dart';
 import 'package:fruit_market/screens/phone_verify.dart';
@@ -39,6 +43,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
+        '/main': (context) => const MainScreen(),
         '/onboarding': (context) => OnboardingScreen(),
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignUpScreen(),
@@ -49,6 +54,9 @@ class MyApp extends StatelessWidget {
         '/search': (context) => SearchScreen(),
         '/seller-profile': (context) => SellerProfileScreen(),
         '/product_details': (context) => ProductDetailsScreen(),
+        '/basket': (context) => BasketScreen(),
+        '/delivery_time': (context) => DeliveryTimeScreen(),
+        '/delivery_address': (context) => DeliveryAddressScreen(),
       },
     );
   }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:fruit_market/screens/main.dart';
+import 'package:fruit_market/screens/onboarding.dart';
+import 'package:fruit_market/screens/welcome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,11 +13,32 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  initState() {
+  void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/onboarding');
-    });
+    _navigateAfterDelay();
+  }
+
+  Future<void> _navigateAfterDelay() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    final prefs = await SharedPreferences.getInstance();
+    final hasSeenOnboarding = prefs.getBool('hasSeenOnboarding') ?? false;
+    final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    Widget nextScreen;
+
+    if (!hasSeenOnboarding) {
+      nextScreen = const OnboardingScreen();
+    } else if (!isLoggedIn) {
+      nextScreen = const WelcomeScreen();
+    } else {
+      nextScreen = const MainScreen();
+    }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => nextScreen),
+    );
   }
 
   @override
@@ -22,28 +46,25 @@ class _SplashScreenState extends State<SplashScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xFF003602), // Set the background color to match the top 1/4
+      backgroundColor: const Color(0xFF003602),
       body: Column(
         children: [
           SizedBox(
             height: screenHeight * 0.25,
-            child: Container(
-              color: Color(0xFF003602), // Top 1/4 of the screen
-            ),
+            child: Container(color: const Color(0xFF003602)),
           ),
           Center(
             child: Image.asset(
-              'assets/images/logo.png', // Your logo asset
+              'assets/images/logo.png',
               height: screenHeight * 0.25,
               fit: BoxFit.contain,
             ),
           ),
-          // Vegetables Image at the bottom
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Image.asset(
-                'assets/images/fruits.png', // Your vegetables image asset
+                'assets/images/fruits.png',
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

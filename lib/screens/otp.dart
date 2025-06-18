@@ -50,15 +50,16 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void verifyOtp() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isVerified', true);
-    Navigator.pushReplacementNamed(context, '/home');
+    await prefs.setBool('isLoggedIn', true);
+
+    Navigator.pushReplacementNamed(context, '/main');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       leading: IconButton(
+        leading: IconButton(
           icon: SvgPicture.asset(
             'assets/icons/back_arrow.svg',
             width: 24,
@@ -79,7 +80,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
-                  fontFamily: 'Poppins'
+                  fontFamily: 'Poppins',
                 ),
               ),
               const SizedBox(height: 30),

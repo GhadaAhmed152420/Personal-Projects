@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/constants/app_colors.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -56,7 +56,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Align(
                         alignment: Alignment.topRight,
                         child: TextButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            final prefs = await SharedPreferences.getInstance();
+                            await prefs.setBool('hasSeenOnboarding', true);
                             Navigator.pushReplacementNamed(context, '/welcome');
                           },
                           child: TextButton(
@@ -66,7 +68,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               height: 33,
                             ),
                             onPressed:
-                                () => Navigator.pushReplacementNamed(context, '/welcome'),
+                                () => Navigator.pushReplacementNamed(
+                                  context,
+                                  '/welcome',
+                                ),
                           ),
                         ),
                       ),
@@ -121,9 +126,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             if (currentIndex == pages.length - 1) {
-                              Navigator.pushReplacementNamed(context, '/welcome');
+                              final prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.setBool('hasSeenOnboarding', true);
+                              Navigator.pushReplacementNamed(
+                                context,
+                                '/welcome',
+                              );
                             } else {
                               _controller.nextPage(
                                 duration: const Duration(milliseconds: 300),

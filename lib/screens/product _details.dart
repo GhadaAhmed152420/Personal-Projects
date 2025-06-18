@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
 import 'package:fruit_market/widgets/addons_options.dart';
-import 'package:fruit_market/widgets/bottom_nav.dart';
 import 'package:fruit_market/widgets/weight_options.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -156,7 +155,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               alignment: Alignment.bottomRight,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  // Your logic here
+                  Navigator.popAndPushNamed(context, '/basket');
                 },
                 icon: SvgPicture.asset(
                   "assets/icons/cart.svg",
@@ -177,7 +176,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: buildBottomNav(currentIndex, setState),
     );
   }
 }

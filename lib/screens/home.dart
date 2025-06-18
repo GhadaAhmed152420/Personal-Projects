@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
-import 'package:fruit_market/widgets/bottom_nav.dart';
 import 'package:fruit_market/widgets/category_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fruit_market/widgets/seller_card.dart';
@@ -160,7 +159,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: buildBottomNav(currentIndex, setState),
     );
   }
 }

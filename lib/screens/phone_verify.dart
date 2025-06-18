@@ -113,7 +113,7 @@ class _PhoneVerifyScreenState extends State<PhoneVerifyScreen> {
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/otp');
+                Navigator.pushReplacementNamed(context, '/otp');
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(50),

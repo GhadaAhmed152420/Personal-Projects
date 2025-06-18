@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_market/constants/app_colors.dart';
-import 'package:fruit_market/widgets/bottom_nav.dart';
 import 'package:fruit_market/widgets/categories.dart';
 import 'package:fruit_market/widgets/product_card.dart';
 import 'package:fruit_market/widgets/seller_header.dart';
@@ -94,7 +93,7 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: buildBottomNav(currentIndex, setState),
+    
     );
   }
 }
