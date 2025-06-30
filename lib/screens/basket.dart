@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:fruit_market/constants/app_colors.dart';
 import 'package:fruit_market/screens/delivery_time.dart';
 
 class BasketScreen extends StatefulWidget {
@@ -16,9 +18,24 @@ class _BasketScreenState extends State<BasketScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Basket'),
         centerTitle: true,
-        leading: const Icon(Icons.arrow_back_ios),
+        title: const Text(
+          'Basket',
+          style: TextStyle(
+            color: AppColors.primary,
+            fontFamily: 'Poppins',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 24,
+            height: 24,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: Column(
         children: [
